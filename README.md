@@ -27,4 +27,9 @@ Project File Structure V 0.1
 └── README.md         # Project documentation
 
 
+Getting Started
+
+1. Create virtual environment python -m venv venv
+2. Activate virtual env
+3. pip install -r requirements.txt
 

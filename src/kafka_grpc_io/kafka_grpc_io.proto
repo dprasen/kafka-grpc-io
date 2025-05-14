@@ -1,0 +1,39 @@
+   syntax = "proto3";
+
+   package kafka_grpc_io;
+
+   // Define the service
+   service KafkaService {
+       rpc Produce(ProduceRequest) returns (ProduceResponse) {}
+       rpc Consume(ConsumeRequest) returns (stream ConsumeResponse) {}
+   }
+
+   // Define the message structure for producing messages
+   message ProduceRequest {
+       string topic = 1;
+       bytes key = 2;  // Use bytes for key to handle any type of data
+       bytes value = 3; // Use bytes for value to handle any serialized format
+       map<string, bytes> headers = 4; // Added headers
+   }
+
+   message ProduceResponse {
+       int64 offset = 1;
+       int32 partition = 2;
+       string error_message = 3; // Add error message for better error handling
+       bool success = 4; //Add success field
+   }
+
+   // Define the message structure for consuming messages
+   message ConsumeRequest {
+       string topic = 1;
+       int64 num_messages = 2; // Add num_messages to limit consumption
+       int64 timeout_ms = 3;    // Add timeout for consumer
+   }
+
+   message ConsumeResponse {
+       bytes key = 1;
+       bytes value = 2;
+       int64 offset = 3;
+       int32 partition = 4;
+       map<string, bytes> headers = 5; // Added headers
+   }
