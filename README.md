@@ -9,7 +9,7 @@ Setup kafka in docker
 Project File Structure V 0.1
 
 
-├── pyproject.toml      # Project configuration (dependencies, etc.)
+├── requirements.txt      # Project configuration (dependencies, etc.)
 ├── src/
 │   └── kafka_grpc_io/  # Main application package
 │       ├── __init__.py
@@ -25,3 +25,6 @@ Project File Structure V 0.1
 │   ├── test_grpc_service.py
 │   └── test_serializers.py
 └── README.md         # Project documentation
+
+
+
